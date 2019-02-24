@@ -54,6 +54,11 @@ namespace DotNetCore2RestWebApplication
             app.UseCookiePolicy();
 
             app.UseMvc();
+
+            app.Run(async (context) =>
+            {
+                await context.Response.WriteAsync("I am alive!");
+            });
         }
     }
 }

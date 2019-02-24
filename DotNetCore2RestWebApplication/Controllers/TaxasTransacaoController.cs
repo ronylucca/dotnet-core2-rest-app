@@ -1,46 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Reflection;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace DotNetCore2RestWebApplication.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/")]
     public class TaxasTransacaoController : Controller
     {
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        /* OBS: Utilizacao do Assembly( Reflection ) para obter a instancia do 
+         * Adquirente dinamicamente
+         */
+        // GET: api/values
+        [HttpGet("mdr/adquirente/{adquirente}")]
+        public IActionResult Get(string adquirente)
         {
-            return "value";
+            Type adquirenteObj = Assembly.GetEntryAssembly().GetType("DotNetCore2RestWebApplication.Models." + adquirente);
+
+            if (adquirenteObj != null)
+            {
+                object entity = Activator.CreateInstance(adquirenteObj);
+                return Ok(entity);
+            }
+            else
+            {
+                return NotFound();
+            }
+
         }
 
         // POST api/values
-        [HttpPost]
+        [HttpPost("transaction")]
         public void Post([FromBody]string value)
         {
+            //Validar Json
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
