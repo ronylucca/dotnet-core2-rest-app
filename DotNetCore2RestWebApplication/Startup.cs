@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -31,8 +32,15 @@ namespace DotNetCore2RestWebApplication
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //services.AddMvcCore().AddJsonFormatters().AddAuthorization().AddDataAnnotations();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddMvcOptions(options =>
+                {
+                    options.AllowCombiningAuthorizeFilters = false;
+                    // All exceptions thrown by an IInputFormatter are treated
+                    // as model state errors (keep 2.0 behavior).
+                    options.InputFormatterExceptionPolicy = InputFormatterExceptionPolicy.AllExceptions;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
