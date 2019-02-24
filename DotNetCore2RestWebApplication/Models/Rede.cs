@@ -10,12 +10,12 @@ namespace DotNetCore2RestWebApplication.Models
             ObtemTaxasMaster();
         }
 
-        public void ObtemTaxasVisa()
+        public override void ObtemTaxasVisa()
         {
             this.Taxas.Add(new Taxa("Visa", 2.75M, 2.16M));
         }
 
-        public void ObtemTaxasMaster()
+        public override void ObtemTaxasMaster()
         {
             this.Taxas.Add(new Taxa("Master", 3.10M, 1.58M));
         }
