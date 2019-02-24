@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DotNetCore2RestWebApplication.Models
 {
-    abstract class Adquirente
+    public class Adquirente
     {
         public string Adquirente_ { get; set; }
         private List<Taxa> taxas = new List<Taxa>();
@@ -13,9 +13,9 @@ namespace DotNetCore2RestWebApplication.Models
             get { return taxas; }
         }
 
-        public abstract void obtemTaxasMaster();
+        public void ObtemTaxasMaster() { }
 
-        public abstract void obtemTaxasVisa();
+        public void ObtemTaxasVisa() { }
     }
 
 }

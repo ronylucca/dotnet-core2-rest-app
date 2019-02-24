@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DotNetCore2RestWebApplication.Models
 {
-    public class Transaction
+    public class TransacaoTaxas
     {
         [Required]
         public decimal valor { get; set; }
@@ -15,7 +15,7 @@ namespace DotNetCore2RestWebApplication.Models
         public string tipoTransacao { get; set; }
 
 
-        public Transaction(decimal valor, string adquirente, string bandeira, string tipoTransacao)
+        public TransacaoTaxas(decimal valor, string adquirente, string bandeira, string tipoTransacao)
         {
             this.valor = valor;
             this.adquirente = adquirente;
@@ -23,6 +23,6 @@ namespace DotNetCore2RestWebApplication.Models
             this.tipoTransacao = tipoTransacao;
         }
 
-        public Transaction() { }
+        public TransacaoTaxas(){}
     }
 }

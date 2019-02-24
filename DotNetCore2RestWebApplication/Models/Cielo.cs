@@ -6,16 +6,16 @@ namespace DotNetCore2RestWebApplication.Models
         public Cielo()
         {
             this.Adquirente_ = "Cielo";
-            obtemTaxasVisa();
-            obtemTaxasMaster();
+            ObtemTaxasVisa();
+            ObtemTaxasMaster();
         }
 
-        public override void obtemTaxasVisa()
+        public void ObtemTaxasVisa()
         {    
             this.Taxas.Add(new Taxa("Visa", 2.25M, 2.00M));
         }
 
-        public override void obtemTaxasMaster()
+        public void ObtemTaxasMaster()
         {
             this.Taxas.Add(new Taxa("Master", 2.35M, 1.98M));
         }

@@ -2,6 +2,7 @@
 using System.Reflection;
 using System.Threading.Tasks;
 using DotNetCore2RestWebApplication.Models;
+using DotNetCore2RestWebApplication.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -12,22 +13,28 @@ namespace DotNetCore2RestWebApplication.Controllers
 {
     [ApiController]
     [Route("api/")]
-    public class TaxasTransacaoController : Controller
+    public class TransacaoTaxasController : Controller
     {
+
+        private readonly ITransacaoTaxasService _transacaoTaxasService;
+
+        public TransacaoTaxasController(ITransacaoTaxasService transacaoTaxasService)
+        {
+            _transacaoTaxasService = transacaoTaxasService;
+        }
 
         /* OBS: Utilizacao do Assembly( Reflection ) para obter a instancia do 
          * Adquirente dinamicamente
          */
         // GET: api/values
         [HttpGet("mdr/adquirente/{adquirente}")]
-        public async Task<IActionResult> Get(string adquirente)
+        public async Task<IActionResult> ObtemMdrAdquirente(string adquirente)
         {
-            Type adquirenteObj = Assembly.GetEntryAssembly().GetType("DotNetCore2RestWebApplication.Models." + adquirente);
+            Adquirente adquirenteObj = _transacaoTaxasService.ObtemMdrAdquirente(adquirente);
 
             if (adquirenteObj != null)
             {
-                object entity = Activator.CreateInstance(adquirenteObj);
-                return Ok(entity);
+                return Ok(adquirenteObj);
             }
             else
             {
@@ -38,7 +45,7 @@ namespace DotNetCore2RestWebApplication.Controllers
 
         // POST api/values
         [HttpPost("transaction")]
-        public async Task<IActionResult> obtemValorLiquidoTransacao([FromBody] Transaction transaction)
+        public async Task<IActionResult> ObtemValorLiquidoTransacao([FromBody] TransacaoTaxas transacaoTaxas)
         {
             if (!ModelState.IsValid)
             {
@@ -46,7 +53,7 @@ namespace DotNetCore2RestWebApplication.Controllers
             }
             //Validar Json
 
-            return Ok(transaction);
+            return Ok(_transacaoTaxasService.ObtemValorLiquidoTransacao(transacaoTaxas));
         }
 
     }
