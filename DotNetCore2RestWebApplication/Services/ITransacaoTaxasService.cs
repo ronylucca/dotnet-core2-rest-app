@@ -1,4 +1,5 @@
-﻿using DotNetCore2RestWebApplication.Models;
+﻿using System.Threading.Tasks;
+using DotNetCore2RestWebApplication.Models;
 
 namespace DotNetCore2RestWebApplication.Services
 {

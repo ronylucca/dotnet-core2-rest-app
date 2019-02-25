@@ -26,7 +26,8 @@ namespace DotNetCore2RestWebApplication.Controllers
         [HttpGet("mdr/adquirente/{adquirente}")]
         public async Task<IActionResult> ObtemMdrAdquirente(string adquirente)
         {
-            Adquirente adquirenteObj = _transacaoTaxasService.ObtemMdrAdquirente(adquirente);
+            dynamic result = _transacaoTaxasService.ObtemMdrAdquirente(adquirente);
+            Adquirente adquirenteObj = result;
 
             if (adquirenteObj != null)
             {
@@ -47,9 +48,12 @@ namespace DotNetCore2RestWebApplication.Controllers
             {
                 return BadRequest(ModelState);
             }
-            //Validar Json
-
-            return Ok(_transacaoTaxasService.ObtemValorLiquidoTransacao(transacaoTaxas));
+            else
+            {
+                dynamic result = _transacaoTaxasService.ObtemValorLiquidoTransacao(transacaoTaxas);
+                return Ok(new ValorLiquidoResponse(result));
+            }
+           
         }
 
     }

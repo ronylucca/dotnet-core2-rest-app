@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Threading.Tasks;
 using DotNetCore2RestWebApplication.Models;
 
 namespace DotNetCore2RestWebApplication.Services
@@ -7,6 +8,7 @@ namespace DotNetCore2RestWebApplication.Services
     public class TransacaoTaxasService : ITransacaoTaxasService
     {
 
+        private static string VISA = "Visa";
 
         public Adquirente ObtemMdrAdquirente(string adquirente)
         {
@@ -14,7 +16,8 @@ namespace DotNetCore2RestWebApplication.Services
             if (adquirenteObj != null)
             {
                 object entity = Activator.CreateInstance(adquirenteObj);
-                return (DotNetCore2RestWebApplication.Models.Adquirente)entity;
+                ((Adquirente)entity).consultarTaxas();
+                return (Adquirente)entity;
             }
             else
             {
@@ -30,11 +33,10 @@ namespace DotNetCore2RestWebApplication.Services
             if(adquirenteObj != null)
             {
                 object entity = Activator.CreateInstance(adquirenteObj);
-                Adquirente adquirente = ((DotNetCore2RestWebApplication.Models.Adquirente)entity);
+                Adquirente adquirente = ((Adquirente)entity);
 
                 //cruzar dados da transacaoTaxas com Adquirente
-                adquirente.ObtemTaxasMaster();
-                return adquirente.Taxas[0].Credito;
+                return RealizaCalculoTaxasTransacao(transacaoTaxas, adquirente);
             }
             else
             {
@@ -42,5 +44,18 @@ namespace DotNetCore2RestWebApplication.Services
             }
         }
 
+        private decimal RealizaCalculoTaxasTransacao(TransacaoTaxas transacaoTaxas, Adquirente adquirente)
+        {
+            if (transacaoTaxas.bandeira.Equals(VISA))
+            {
+                adquirente.ObtemTaxasVisa();
+            }
+            else
+            {
+                adquirente.ObtemTaxasMaster();
+            }
+            decimal valorTaxaAdquirenteBandeira = adquirente.Taxas[0].ObtemTaxaTransacao(transacaoTaxas.tipoTransacao);
+            return transacaoTaxas.calculaValorTaxa(valorTaxaAdquirenteBandeira);
+        }
     }
 }

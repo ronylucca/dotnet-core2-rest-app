@@ -6,8 +6,6 @@ namespace DotNetCore2RestWebApplication.Models
         public Stone()
         {
             this.Adquirente_ = "Stone";
-            ObtemTaxasVisa();
-            ObtemTaxasMaster();
         }
 
         public override void ObtemTaxasVisa()

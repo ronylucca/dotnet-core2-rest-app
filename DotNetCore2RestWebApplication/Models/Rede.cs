@@ -6,8 +6,6 @@ namespace DotNetCore2RestWebApplication.Models
         public Rede()
         {
             this.Adquirente_ = "Rede";
-            ObtemTaxasVisa();
-            ObtemTaxasMaster();
         }
 
         public override void ObtemTaxasVisa()

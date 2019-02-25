@@ -6,8 +6,6 @@ namespace DotNetCore2RestWebApplication.Models
         public Cielo()
         {
             this.Adquirente_ = "Cielo";
-            ObtemTaxasVisa();
-            ObtemTaxasMaster();
         }
 
         public override void ObtemTaxasVisa()
@@ -19,5 +17,6 @@ namespace DotNetCore2RestWebApplication.Models
         {
             this.Taxas.Add(new Taxa("Master", 2.35M, 1.98M));
         }
+
     }
 }

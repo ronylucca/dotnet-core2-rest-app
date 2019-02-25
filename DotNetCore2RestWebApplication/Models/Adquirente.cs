@@ -13,9 +13,17 @@ namespace DotNetCore2RestWebApplication.Models
             get { return taxas; }
         }
 
+        public void consultarTaxas()
+        {
+            ObtemTaxasVisa();
+            ObtemTaxasMaster();
+        }
+
         public abstract void ObtemTaxasMaster();
 
         public abstract void ObtemTaxasVisa();
+
+      
     }
 
 }

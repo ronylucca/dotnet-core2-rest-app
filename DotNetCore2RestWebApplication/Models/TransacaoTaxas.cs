@@ -23,6 +23,23 @@ namespace DotNetCore2RestWebApplication.Models
             this.tipoTransacao = tipoTransacao;
         }
 
-        public TransacaoTaxas(){}
+        public TransacaoTaxas() { }
+
+        internal decimal calculaValorTaxa(decimal valorTaxaAdquirenteBandeira)
+        {
+            return valor - ((valor * valorTaxaAdquirenteBandeira) / 100);
+        }
     }
 }
+
+    public class ValorLiquidoResponse{
+
+        public decimal valorLiquido;
+        
+        public ValorLiquidoResponse(decimal valor)
+        {
+            this.valorLiquido = valor;
+        }
+    }
+
+
