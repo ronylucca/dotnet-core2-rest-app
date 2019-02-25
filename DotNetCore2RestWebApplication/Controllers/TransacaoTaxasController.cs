@@ -19,8 +19,8 @@ namespace DotNetCore2RestWebApplication.Controllers
             _transacaoTaxasService = transacaoTaxasService;
         }
 
-        /* OBS: Utilizacao do Assembly( Reflection ) para obter a instancia do 
-         * Adquirente dinamicamente
+        /* OBS: Utilizacao do Reflection como factory do
+         * Adquirente referente.
          */
         // GET: api/mdr/adquirente/{Nome}
         [HttpGet("mdr/adquirente/{adquirente}")]
