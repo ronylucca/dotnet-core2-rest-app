@@ -45,6 +45,7 @@ namespace DotNetCore2RestWebApplication.Controllers
                 }
             }catch(Exception e)
             {
+                _logger.LogInformation("Ocorreu um erro ao processar consulta MDR. " + e.Message);
                 return NoContent();
             }
         }

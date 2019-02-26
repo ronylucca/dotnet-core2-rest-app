@@ -8,7 +8,8 @@ namespace DotNetCore2RestWebApplication.Models
     {
         [Required]
         [DataType(DataType.Currency)]
-        [Column(TypeName = "decimal(18, 2)")]
+        [RegularExpression(@"^\d+\.\d{0,2}$")]
+        [Range(0, 9999999999999999.99)]
         public decimal valor { get; set; }
 
         [Required]
@@ -44,11 +45,12 @@ namespace DotNetCore2RestWebApplication.Models
 
     public class ValorLiquidoResponse{
 
-        public decimal valorLiquido;
         
+        public decimal valorLiquido;
+                    
         public ValorLiquidoResponse(decimal valor)
         {
-            this.valorLiquido = valor;
+            this.valorLiquido = Math.Round(valor, 2);
         }
     }
 
