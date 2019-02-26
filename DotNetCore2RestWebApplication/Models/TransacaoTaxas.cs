@@ -27,7 +27,8 @@ namespace DotNetCore2RestWebApplication.Models
 
         internal decimal calculaValorTaxa(decimal valorTaxaAdquirenteBandeira)
         {
-            return valor - ((valor * valorTaxaAdquirenteBandeira) / 100);
+            return Decimal.Subtract(valor, Decimal.Divide(Decimal.Multiply( valor, valorTaxaAdquirenteBandeira), 100));
+
         }
     }
 }
