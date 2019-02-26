@@ -67,7 +67,7 @@ namespace DotNetCore2RestWebApplication.Controllers
 
                 }catch(Exception e)
                 {
-                    _logger.LogInformation("");
+                    _logger.LogInformation("Ocorreu um erro ao processar o valor liquido de transacao. " + e.Message);
                     return StatusCode(500);
                 }
             }
