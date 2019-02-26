@@ -1,17 +1,26 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DotNetCore2RestWebApplication.Models
 {
     public class TransacaoTaxas
     {
         [Required]
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "decimal(18, 2)")]
         public decimal valor { get; set; }
+
         [Required]
+        [StringLength(30, MinimumLength = 3)]
         public string adquirente { get; set; }
+
         [Required]
+        [RegularExpression(@"(Master|Visa)")]
         public string bandeira { get; set; }
+
         [Required]
+        [RegularExpression(@"(Credito|Debito)")]
         public string tipoTransacao { get; set; }
 
 
