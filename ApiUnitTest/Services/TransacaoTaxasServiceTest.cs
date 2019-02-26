@@ -1,14 +1,10 @@
 ﻿using System;
-using Xunit;
-using DotNetCore2RestWebApplication.Controllers;
 using System.Diagnostics.CodeAnalysis;
-using System.Net.Http;
 using System.Threading.Tasks;
+using DotNetCore2RestWebApplication.Controllers;
 using DotNetCore2RestWebApplication.Services;
 using Moq;
-using DotNetCore2RestWebApplication.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using Xunit;
 
 namespace ApiUnitTest.Services
 {

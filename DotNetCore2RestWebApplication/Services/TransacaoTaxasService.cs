@@ -2,13 +2,21 @@
 using System.Reflection;
 using System.Threading.Tasks;
 using DotNetCore2RestWebApplication.Models;
+using Microsoft.Extensions.Logging;
 
 namespace DotNetCore2RestWebApplication.Services
 {
     public class TransacaoTaxasService : ITransacaoTaxasService
     {
 
+        private readonly ILogger _logger;
         private static string VISA = "Visa";
+
+
+        public TransacaoTaxasService(ILogger<TransacaoTaxasService> logger)
+        {
+            _logger = logger;
+        }
 
         public Adquirente ObtemMdrAdquirente(string adquirente)
         {
@@ -17,6 +25,7 @@ namespace DotNetCore2RestWebApplication.Services
             {
                 object entity = Activator.CreateInstance(adquirenteObj);
                 ((Adquirente)entity).consultarTaxas();
+                _logger.LogInformation("Processamento de consulta de MDR realizado com sucesso");
                 return (Adquirente)entity;
             }
             else
@@ -26,7 +35,6 @@ namespace DotNetCore2RestWebApplication.Services
 
         }
 
-       
         public decimal ObtemValorLiquidoTransacao(TransacaoTaxas transacaoTaxas)
         {
             Type adquirenteObj =  Assembly.GetEntryAssembly().GetType("DotNetCore2RestWebApplication.Models." + transacaoTaxas.adquirente);
@@ -34,8 +42,7 @@ namespace DotNetCore2RestWebApplication.Services
             {
                 object entity = Activator.CreateInstance(adquirenteObj);
                 Adquirente adquirente = ((Adquirente)entity);
-
-                //cruzar dados da transacaoTaxas com Adquirente
+                _logger.LogInformation("Processamento de consulta do ValorLiquidoAdquirente realizado com sucesso");
                 return RealizaCalculoTaxasTransacao(transacaoTaxas, adquirente);
             }
             else
