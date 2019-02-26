@@ -8,12 +8,12 @@ Implementado com dotnet core 2_2;
   #### Para a API responsável em obter o MDR do adquirente segue:
   #### endpoint base(GET): https://localhost:5001/api/mdr/adquirente/{adquirente}
   #### estamos utilizando três Adquirentes diferentes possiveis ao acessar esta api
-          ```
-          exemplos: 
-          - https://localhost:5001/api/mdr/adquirente/Stone
-          - https://localhost:5001/api/mdr/adquirente/Cielo
-          - https://localhost:5001/api/mdr/adquirente/Rede
-          ```
+```
+	exemplos: 
+	- https://localhost:5001/api/mdr/adquirente/Stone
+	- https://localhost:5001/api/mdr/adquirente/Cielo
+	- https://localhost:5001/api/mdr/adquirente/Rede
+```
           
          Ps. Caso não utilizado um dos três( "Stone", "Cielo", "Rede" ), será retornado 404 notFound
  
