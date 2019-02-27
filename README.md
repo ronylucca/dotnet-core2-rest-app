@@ -36,3 +36,6 @@ adquirente: "Stone", "Cielo", "Rede"
 bandeira: "Visa", "Master"
 tipoTransacao: "Debito"ou "Credito"
 ```
+
+### Rony de Lucca
+### https://www.linkedin.com/in/ronylucca/
