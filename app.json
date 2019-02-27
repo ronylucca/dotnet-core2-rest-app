@@ -2,8 +2,9 @@
   "addons": [
 
   ],
-  "buildpacks": [
-
+  {"buildpacks": [
+   "url": "https://github.com/jincod/dotnetcore-buildpack.git"
+  }
   ],
   "description": "",
   "env": {
