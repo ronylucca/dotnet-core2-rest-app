@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "f9906e78-9417-4345-be3b-888067bf2d87",
+		"name": "DotnetCoreRestApi_RonyLucca",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/mdr",
+			"item": [
+				{
+					"name": "ObtemMDRAdquirenteStone",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bdccbbb5-0954-4798-9b24-778627c7eeb1",
+								"exec": [
+									"pm.test(\"Response completo\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"taxas\");",
+									"});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://dotnet-core2-rest-app.herokuapp.com/api/mdr/adquirente/Stone",
+							"protocol": "https",
+							"host": [
+								"dotnet-core2-rest-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"mdr",
+								"adquirente",
+								"Stone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObtemMDRAdquirenteCielo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bdccbbb5-0954-4798-9b24-778627c7eeb1",
+								"exec": [
+									"pm.test(\"Response completo\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"taxas\");",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://dotnet-core2-rest-app.herokuapp.com/api/mdr/adquirente/Cielo",
+							"protocol": "https",
+							"host": [
+								"dotnet-core2-rest-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"mdr",
+								"adquirente",
+								"Cielo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObtemMDRAdquirenteRede",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bdccbbb5-0954-4798-9b24-778627c7eeb1",
+								"exec": [
+									"pm.test(\"Response completo\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"taxas\");",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://dotnet-core2-rest-app.herokuapp.com/api/mdr/adquirente/Cielo",
+							"protocol": "https",
+							"host": [
+								"dotnet-core2-rest-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"mdr",
+								"adquirente",
+								"Cielo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObtemMDR Adquirente Inexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bdccbbb5-0954-4798-9b24-778627c7eeb1",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://dotnet-core2-rest-app.herokuapp.com/api/mdr/adquirente/Adquirentequalquer",
+							"protocol": "https",
+							"host": [
+								"dotnet-core2-rest-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"mdr",
+								"adquirente",
+								"Adquirentequalquer"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Testes para api COnsultaMdrAdquirente"
+		},
+		{
+			"name": "api/transaction",
+			"item": [
+				{
+					"name": "ObtemValorLiquidoTransacaoValidoSucesso",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56f7c440-c3a0-4c47-aa7b-c79116006ffe",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Response contendo o valorLiquido corretamente calculado\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.valorLiquido).to.eql(33440.09);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"valor\":34509.90,\n\t\"adquirente\": \"Rede\",\n\t\"bandeira\": \"Master\",\n\t\"tipoTransacao\": \"Credito\"\n}"
+						},
+						"url": {
+							"raw": "https://dotnet-core2-rest-app.herokuapp.com/api/transaction",
+							"protocol": "https",
+							"host": [
+								"dotnet-core2-rest-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"transaction"
+							]
+						},
+						"description": "Request Json body completo"
+					},
+					"response": []
+				},
+				{
+					"name": "ObtemValorLiquidoTransacaoAdquirenteInexistente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56f7c440-c3a0-4c47-aa7b-c79116006ffe",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"//Uma vez que o valor do campo adquirente é dinamico, ao contrario dos demais campos em exemplo de tarefa, achei interessante retornar 200, no entanto, com valor ZERO. ",
+									"pm.test(\"Response contendo o valorLiquido com valor ZERO\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.valorLiquido).to.eql(0);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"valor\":34509.90,\n\t\"adquirente\": \"Jedi\",\n\t\"bandeira\": \"Master\",\n\t\"tipoTransacao\": \"Credito\"\n}"
+						},
+						"url": {
+							"raw": "https://dotnet-core2-rest-app.herokuapp.com/api/transaction",
+							"protocol": "https",
+							"host": [
+								"dotnet-core2-rest-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"transaction"
+							]
+						},
+						"description": "Request Json body completo"
+					},
+					"response": []
+				},
+				{
+					"name": "ObtemValorLiquidoTransacaoValidaContratoCampos",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56f7c440-c3a0-4c47-aa7b-c79116006ffe",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Body mao contem campo valor\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"The field valor must match the regular expression\");",
+									"});",
+									"pm.test(\"Body nao contem campo bandeira\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"The bandeira field is required.\");",
+									"});",
+									"pm.test(\"Body nao contem campo adquirente\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"The adquirente field is required.\");",
+									"});",
+									"pm.test(\"Body nao contem campo tipoTransacao\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"The tipoTransacao field is required.\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n}"
+						},
+						"url": {
+							"raw": "https://dotnet-core2-rest-app.herokuapp.com/api/transaction",
+							"protocol": "https",
+							"host": [
+								"dotnet-core2-rest-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"transaction"
+							]
+						},
+						"description": "Valida contrato Api"
+					},
+					"response": []
+				},
+				{
+					"name": "ObtemValorLiquidoTransacaoCampoBandeiraInvalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56f7c440-c3a0-4c47-aa7b-c79116006ffe",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Valor do campo bandeira nao corresponde a Master ou Visa\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"The field bandeira must match the regular expression '(Master|Visa)'\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"valor\":34509.90,\n\t\"adquirente\": \"Rede\",\n\t\"bandeira\": \"Amex\",\n\t\"tipoTransacao\": \"Credito\"\n}"
+						},
+						"url": {
+							"raw": "https://dotnet-core2-rest-app.herokuapp.com/api/transaction",
+							"protocol": "https",
+							"host": [
+								"dotnet-core2-rest-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"transaction"
+							]
+						},
+						"description": "Request Json body com campo valor ausente"
+					},
+					"response": []
+				},
+				{
+					"name": "ObtemValorLiquidoTransacaoCampoTipoTransacaoInvalido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56f7c440-c3a0-4c47-aa7b-c79116006ffe",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Valor do campo tipoTransacao nao corresponde a Credito ou Debito\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"The field tipoTransacao must match the regular expression '(Credito|Debito)'\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"valor\":34509.90,\n\t\"adquirente\": \"Rede\",\n\t\"bandeira\": \"Master\",\n\t\"tipoTransacao\": \"Fiado\"\n}"
+						},
+						"url": {
+							"raw": "https://dotnet-core2-rest-app.herokuapp.com/api/transaction",
+							"protocol": "https",
+							"host": [
+								"dotnet-core2-rest-app",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"transaction"
+							]
+						},
+						"description": "Request Json body com campo valor ausente"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
