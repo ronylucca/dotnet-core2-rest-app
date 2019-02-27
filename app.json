@@ -1,0 +1,17 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ],
+  "description": "",
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "dotnet-core2-rest-app",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
