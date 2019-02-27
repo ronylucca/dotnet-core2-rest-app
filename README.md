@@ -4,7 +4,7 @@
 - Implementado com dotnet core 2_2;
 - A aplicação encontra-se rodando no Heroku;
 - Criei uma suite de testes(Collection) no Postman e disponibilizei para facilitar já com a url do Heroku =)
-Basta importar o arquivo PostmanCollectionApiTests_DotnetCoreRestApi_RonyLucca.json como Collection no Postman.
+<b>Basta importar o arquivo PostmanCollectionApiTests_DotnetCoreRestApi_RonyLucca.json como Collection no Postman.<b>
 
 URL Heroku
 ```
